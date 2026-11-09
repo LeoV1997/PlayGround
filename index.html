@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover" />
+  <meta name="theme-color" content="#090b11" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%23090b11'/%3E%3Ctext x='32' y='49' text-anchor='middle' font-size='48' fill='%23d8b77a'%3E%E2%9C%A6%3C/text%3E%3C/svg%3E" />
+  <title>ASHEN GATE — Hunter's Oath</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./style.css" />
+</head>
+<body>
+  <div id="game-root">
+    <canvas id="scene"></canvas>
+    <div class="vignette"></div>
+    <header class="topbar">
+      <div class="brand"><span class="brand-mark">✦</span><div><b>ASHEN GATE</b><small>HUNTER'S OATH</small></div></div>
+      <div class="dungeon-label"><span class="live-dot"></span><div><small>ACTIVE GATE</small><b>THE SUNKEN SANCTUM</b></div></div>
+      <button class="icon-button" id="menu-button" aria-label="Open menu"><span>Ⅱ</span></button>
+    </header>
+    <section class="player-hud">
+      <div class="portrait-wrap"><div class="portrait"><span>☗</span></div><i class="rank-badge" id="rank">F</i></div>
+      <div class="player-info">
+        <div class="name-line"><b>KAEL VARETH</b><span id="level-label">LVL 01</span></div>
+        <div class="meter-label"><span>VITALITY</span><span id="hp-text">100 / 100</span></div>
+        <div class="meter hp-meter"><i id="hp-fill"></i></div>
+        <div class="meter-label xp-label"><span>EXPERIENCE</span><span id="xp-text">0 / 100 XP</span></div>
+        <div class="meter xp-meter"><i id="xp-fill"></i></div>
+      </div>
+    </section>
+    <div class="quest-card"><div class="quest-icon">⚔</div><div><small>HUNTER'S DIRECTIVE <span>01</span></small><b id="quest-text">Purge the Sanctum</b><em id="quest-progress">Defeat the gate guardians</em></div><div class="quest-count" id="kill-count">0 / 6</div></div>
+    <div class="objective-toast" id="toast">A presence stirs in the dark...</div>
+    <div class="boss-bar hidden" id="boss-bar"><div class="boss-title"><span>☠</span> THE DROWNED WARDEN <small>GATE BOSS</small></div><div class="meter boss-meter"><i id="boss-fill"></i></div></div>
+    <div class="compass"><div class="compass-line"></div><span>N</span><b>◆</b><small id="distance">SANCTUM DEPTHS</small></div>
+    <div class="action-hud">
+      <button class="hud-action status-action" id="status-button"><span class="action-symbol">♙</span><small>STATUS</small></button>
+      <button class="hud-action inventory-action" id="inventory-button"><span class="action-symbol">▤</span><small>RELICS <i id="loot-badge">0</i></small></button>
+    </div>
+    <div class="mobile-controls" id="mobile-controls">
+      <div class="stick-zone" id="stick-zone"><div class="stick-base"><div class="stick-knob" id="stick-knob"></div></div></div>
+      <div class="combat-controls">
+        <button class="skill-button" id="special-button"><span>✧</span><small>VEIL</small><i class="cooldown-mask" id="cooldown-mask"></i></button>
+        <button class="attack-button" id="attack-button"><span>⚔</span><small>STRIKE</small></button>
+      </div>
+    </div>
+    <div class="desktop-hint">WASD MOVE <span>·</span> SPACE STRIKE <span>·</span> Q VEIL <span>·</span> DRAG TO LOOK</div>
+    <div class="screen-cover" id="intro-screen">
+      <div class="intro-content"><div class="eyebrow"><i></i> THE GATE HAS OPENED <i></i></div><h1>ASHEN<br><em>GATE</em></h1><p>In a world swallowed by shadow,<br>the weakest hunter still has a choice.</p><div class="rank-intro"><span>HUNTER RANK</span><b>F</b><small>AWAKENED</small></div><button class="primary-button" id="begin-button">ENTER THE SANCTUM <span>↗</span></button><div class="intro-footer">A SOLO HUNTER'S JOURNEY <span>•</span> CHAPTER I</div></div>
+    </div>
+    <div class="modal-layer hidden" id="modal-layer">
+      <div class="modal-card" id="modal-card"><button class="close-button" id="close-modal">×</button><div id="modal-content"></div></div>
+    </div>
+    <div class="level-flash hidden" id="level-flash"><span>✦</span><small>HUNTER AWAKENED</small><b>LEVEL UP</b><em id="level-flash-number">02</em></div>
+  </div>
+  <script type="module" src="./game.js"></script>
+</body>
+</html>
