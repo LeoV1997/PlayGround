@@ -16,6 +16,7 @@
     <div class="vignette"></div>
     <header class="topbar">
       <div class="brand"><div class="brand-mark">✦</div><div><div class="brand-title">RANK <em>UP</em></div><div class="brand-subtitle">THE AWAKENING</div></div></div>
+      <button class="icon-button shop-shortcut" id="open-shop" aria-label="Open shop">✧ <small>SHOP</small></button>
       <button class="icon-button" id="sound-toggle" aria-label="Toggle sound">♫</button>
       <button class="profile-button" id="open-stats"><span class="profile-icon">◈</span><span id="header-level">LVL 01</span><b>F</b></button>
     </header>
@@ -24,11 +25,12 @@
       <div class="location"><span class="location-icon">⌖</span><div><strong>FORGOTTEN CATACOMBS</strong><small id="wave-label">FLOOR 01 · THE AWAKENING</small></div></div>
       <div class="target-card" id="target-card"><div class="target-heading"><span id="enemy-name">SKELETON WARRIOR</span><span id="enemy-level">LVL 1</span></div><div class="bar enemy-bar"><i id="enemy-hp-fill"></i></div><div class="target-meta"><span id="enemy-hp-text">-- / --</span><span id="enemy-type">UNDEAD</span></div></div>
       <div class="player-bars"><div class="player-line"><span class="portrait">♜</span><div class="player-data"><div class="player-name-row"><strong>AWAKENED HUNTER</strong><span id="hp-label">100 / 100</span></div><div class="bar hp-bar"><i id="player-hp-fill"></i></div><div class="xp-row"><span id="level-label">LEVEL 1</span><div class="bar xp-bar"><i id="xp-fill"></i></div><span id="xp-label">0 / 100 XP</span></div></div></div></div>
-      <div class="currency"><span class="coin">✦</span><span id="gold-label">120</span><button id="open-gold" aria-label="Gold details">＋</button></div>
+      <div class="currency-stack"><div class="currency gold-currency"><span class="coin">✦</span><span id="gold-label">120</span><button id="open-gold" aria-label="Open gold shop">＋</button></div><div class="currency crystal-currency"><span class="coin">✧</span><span id="crystal-label">0</span><button id="open-crystals" aria-label="Open crystal shop">＋</button></div></div>
     </section>
 
     <div class="combat-feedback" id="combat-feedback" aria-live="polite"></div>
     <div class="boss-warning" id="boss-warning"><span>⚠</span> THE SKELETON KING AWAKENS</div>
+    <div class="boss-intro" id="boss-intro" aria-hidden="true"><span>AN ANCIENT PRESENCE stirs</span><strong>THE SKELETON KING</strong><small>RULER OF THE FORGOTTEN CATACOMBS</small></div>
 
     <nav class="bottom-nav" aria-label="Game menu">
       <button class="nav-item active" data-panel="hero"><span>♙</span><small>HERO</small></button>
@@ -36,6 +38,7 @@
       <button class="nav-item" data-panel="skills"><span>✧</span><small>SKILLS</small></button>
       <button class="nav-item" data-panel="rank"><span>♜</span><small>RANK</small></button>
       <button class="nav-item" data-panel="dungeon"><span>⛨</span><small>DUNGEON</small></button>
+      <button class="nav-item shop-nav" data-panel="shop"><span>✧</span><small>SHOP</small></button>
     </nav>
 
     <div class="skill-dock" aria-label="Combat skills">
