@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+  <meta name="theme-color" content="#090b11" />
+  <title>Rank Up: The Awakening</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%23090b11'/%3E%3Cpath d='M16 50V14h19q15 0 15 13 0 10-9 13l11 10H36L26 39v11zm10-20h8q6 0 6-4t-6-4h-8z' fill='%23d8b46b'/%3E%3C/svg%3E" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <header class="topbar">
+      <button class="brand" data-view="battle" aria-label="Go to battle"><span class="brand-mark">R</span><span class="brand-copy"><b>RANK <em>UP</em></b><small>THE AWAKENING</small></span></button>
+      <div class="top-center"><span class="server-dot"></span> GATE 01 <i>/</i> THE SUNKEN CATHEDRAL</div>
+      <div class="wallet"><div class="currency gold"><span class="coin">◆</span><b id="gold">1,240</b><button class="plus" data-view="shop">+</button></div><div class="currency aether"><span class="crystal">✧</span><b id="aether">25</b><button class="plus" data-view="shop">+</button></div><button class="avatar" title="Hunter profile">✦<span></span></button></div>
+    </header>
+    <aside class="sidebar">
+      <div class="side-label">HUNTER MENU</div>
+      <button class="nav-item active" data-view="battle"><span class="nav-icon">◈</span><span>Battle</span><kbd>01</kbd></button>
+      <button class="nav-item" data-view="character"><span class="nav-icon">♙</span><span>Character</span></button>
+      <button class="nav-item" data-view="equipment"><span class="nav-icon">⚔</span><span>Equipment</span><span class="nav-badge">1</span></button>
+      <button class="nav-item" data-view="skills"><span class="nav-icon">✧</span><span>Skills</span></button>
+      <button class="nav-item" data-view="companions"><span class="nav-icon">♧</span><span>Companions</span></button>
+      <div class="side-divider"></div>
+      <div class="side-label">OPERATIONS</div>
+      <button class="nav-item" data-view="dungeons"><span class="nav-icon">▤</span><span>Dungeons</span></button>
+      <button class="nav-item" data-view="quests"><span class="nav-icon">☷</span><span>Quests</span><span class="quest-pip"></span></button>
+      <button class="nav-item" data-view="shop"><span class="nav-icon">◇</span><span>Aether shop</span></button>
+      <div class="sidebar-bottom"><div class="gate-card"><div class="gate-eyebrow"><span class="pulse"></span> ACTIVE GATE</div><strong>Catacomb<br>of the Fallen</strong><small>Threat level <b>F</b></small><div class="gate-progress"><span></span></div><small>WAVE <b id="side-wave">02</b> <i>·</i> 10</small></div><div class="user-row"><div class="user-symbol">F</div><div><b>Unknown Hunter</b><small>Rank F · Level <span id="side-level">07</span></small></div><span class="online-dot"></span></div></div>
+    </aside>
+    <main class="main-area">
+      <section class="battle-view" id="battleView">
+        <div class="scene" id="scene">
+          <canvas id="gameCanvas" aria-label="Live dungeon combat scene"></canvas>
+          <div class="scene-vignette"></div><div class="scene-grain"></div>
+          <div class="scene-topline"><div class="location"><span class="location-icon">⌖</span><div><small>GATE 01 · DUNGEON</small><strong>THE SUNKEN CATHEDRAL</strong></div></div><div class="scene-controls"><button id="autoBtn" class="auto-toggle on"><span class="toggle-dot"></span> AUTO <b>ON</b></button><button class="square-btn" id="soundBtn" title="Toggle sound">♫</button><button class="square-btn" id="fullscreenBtn" title="Fullscreen">⛶</button></div></div>
+          <div class="wave-card"><small>EXPLORATION</small><strong>WAVE <span id="waveNum">02</span><i>/</i>10</strong><div class="wave-bar"><span id="waveBar"></span></div><div class="wave-note"><span>✦</span> <b id="waveEnemies">3</b> enemies remaining</div></div>
+          <div class="target-card"><div class="target-top"><span class="target-rank">UNDEAD</span><span class="target-level" id="enemyLevel">LV. 05</span></div><b id="enemyName">Catacomb Guard</b><div class="enemy-health"><span id="enemyHealth"></span></div><div class="target-stats"><span>HP <b id="enemyHpText">—</b></span><span>◈ <b id="enemyType">SKELETON</b></span></div></div>
+          <div class="combat-feed" id="combatFeed"><div><i></i> Gate resonance detected</div><div><i></i> Auto-hunt initiated</div></div>
+          <div class="character-hud"><div class="hunter-level"><div class="level-orb">07</div><div class="hunter-ident"><div><b>ASHEN WARDEN</b><span class="rank-tag">F RANK</span></div><small>AWAKENING <b>DORMANT</b></small></div></div><div class="vital-bars"><div class="vital-row"><span class="heart">♥</span><div class="vital-track"><span id="playerHealth"></span></div><b id="healthText">840 / 840</b></div><div class="vital-row"><span class="xp-glyph">✦</span><div class="vital-track xp-track"><span id="xpBar"></span></div><b id="xpText">2,160 / 3,000 XP</b></div></div></div>
+          <div class="boss-alert" id="bossAlert"><span>⚠</span> DUNGEON GUARDIAN APPROACHING</div>
+          <div class="skill-dock"><div class="combat-status"><span class="combat-live"><i></i> AUTO COMBAT</span><small>Next attack <b id="attackTimer">1.2s</b></small></div><div class="skills-row"><button class="skill-btn" data-skill="strike"><span class="skill-symbol">⚔</span><b>Rending<br>Strike</b><small>Q</small><i class="cooldown"></i></button><button class="skill-btn" data-skill="burst"><span class="skill-symbol burst-symbol">✷</span><b>Umbral<br>Nova</b><small>W</small><i class="cooldown"></i></button><button class="skill-btn" data-skill="heal"><span class="skill-symbol heal-symbol">✚</span><b>Second<br>Breath</b><small>E</small><i class="cooldown"></i></button><button class="skill-btn ultimate" data-skill="ultimate"><span class="ult-label">ULTIMATE</span><span class="skill-symbol">✧</span><b>Nightfall</b><small>R</small><i class="cooldown"></i></button></div></div>
+          <div class="loot-toast" id="lootToast">✦ <span>Relic recovered</span></div>
+          <button class="scene-skip" id="skipWave">✦ &nbsp; CLAIM WAVE REWARDS</button>
+        </div>
+        <aside class="right-rail">
+          <div class="rail-heading"><div><small>HUNTER STATUS</small><h2>FIELD REPORT</h2></div><span class="live-pill"><i></i> LIVE</span></div>
+          <div class="power-card"><div class="power-emblem">✧</div><div><small>COMBAT POWER</small><strong id="power">1,284</strong></div><span class="power-up">↗ 12%</span></div>
+          <div class="rail-section"><div class="section-title">ACTIVE COMPANIONS <button data-view="companions">MANAGE ↗</button></div><div class="companion-mini"><div class="companion-avatar wolf">狼</div><div class="companion-info"><b>Vesper</b><small>SHADOW WOLF · LV. 4</small><div class="mini-xp"><span></span></div></div><span class="companion-state">●</span></div><div class="companion-mini"><div class="companion-avatar wisp">✧</div><div class="companion-info"><b>Hollow Wisp</b><small>ARCANE · LV. 3</small><div class="mini-xp"><span></span></div></div><span class="companion-state">●</span></div><button class="add-companion" data-view="companions">＋ &nbsp; SUMMON COMPANION</button></div>
+          <div class="rail-section dungeon-objective"><div class="section-title">GATE OBJECTIVE <span class="objective-icon">⌖</span></div><div class="objective-name"><span class="objective-seal">Ⅰ</span><div><b>Clear the catacombs</b><small>Defeat the guardian</small></div></div><div class="objective-progress"><span id="objectiveBar"></span></div><div class="objective-foot"><span>Progress</span><b id="objectiveText">4 / 10</b></div></div>
+          <div class="rail-section rewards-section"><div class="section-title">RUN REWARDS <span class="subtle">THIS GATE</span></div><div class="reward-line"><span class="reward-icon gold-icon">◆</span><span>Gold collected</span><b id="runGold">+280</b></div><div class="reward-line"><span class="reward-icon xp-icon">✦</span><span>Experience</span><b id="runXp">+460</b></div><div class="reward-line"><span class="reward-icon loot-icon">▣</span><span>Equipment found</span><b id="runLoot">1</b></div><div class="rewards-divider"></div><button class="rewards-button" data-view="dungeons">DUNGEON REWARDS <span>↗</span></button></div>
+          <div class="rank-progress"><div class="rank-seal">F</div><div class="rank-progress-copy"><small>HUNTER RANK</small><b>F RANK <span>·</span> NOVICE</b><div class="rank-track"><span></span></div><small>Rank exam unlocks at Lv. 10</small></div></div>
+        </aside>
+      </section>
+      <section class="content-view hidden" id="contentView"></section>
+    </main>
+  </div>
+  <div class="toast" id="toast" role="status"></div>
+  <div class="modal-backdrop hidden" id="modalBackdrop"><div class="modal" id="modal"><button class="modal-close" id="modalClose">×</button><div id="modalContent"></div></div></div>
+  <script src="game.js"></script>
+</body>
+</html>
